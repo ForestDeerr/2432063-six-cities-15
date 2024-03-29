@@ -9,6 +9,11 @@ import { offers } from './mocks/offers';
 import { reviews } from './mocks/reviews';
 import { citiesList } from './const';
 
+import { fetchQuestionAction, checkAuthAction } from './store/api-action';
+store.dispatch(fetchQuestionAction());
+store.dispatch(checkAuthAction());
+
+
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );

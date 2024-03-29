@@ -6,7 +6,6 @@ import { useState } from 'react';
 
 import { useAppSelector } from '../../hooks';
 
-
 type MainPageProps = {
   citiesList: string[];
 }
@@ -19,6 +18,9 @@ function MainPage({citiesList}: MainPageProps): JSX.Element {
   const mapActions = useAppSelector((state) => state.city);
   const cityActive = useAppSelector((state) => state.cityActive);
   const placesCount = offersActive.length;
+
+  const filteredOffersByCity = offersActive.filter((offer) => offer.city.name === cityActive);
+
 
   return (
     <div className="page page--gray page--main">
@@ -68,11 +70,11 @@ function MainPage({citiesList}: MainPageProps): JSX.Element {
 
               {<PlacesSorting />}
 
-              {<PlaceCardList offers={offersActive} setCardHoverId = {setCardHoverId} />}
+              {<PlaceCardList offers={filteredOffersByCity} setCardHoverId = {setCardHoverId} />}
 
             </section>
             <div className="cities__right-section">
-              <Map offers={offersActive} CITY={mapActions} cardHoverId={cardHoverId} mapType={'cities'}/>
+              <Map offers={filteredOffersByCity} CITY={mapActions} cardHoverId={cardHoverId} mapType={'cities'}/>
             </div>
           </div>
         </div>
