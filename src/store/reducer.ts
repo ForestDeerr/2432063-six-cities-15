@@ -1,11 +1,11 @@
 import {createReducer} from '@reduxjs/toolkit';
-import {setCityActive, getOffersActive, setMapActive, getSortType, getSortOffers, loadOffers, requireAuthorization} from './action';
+import {setCityActive, getOffersActive, setMapActive, getSortType, getSortOffers, loadOffers, requireAuthorization, setUser} from './action';
 import { DEFAULT_CITY, defaultLocation, SortType } from '../const';
-import { offers } from '../mocks/offers';
 import { getSortedOffers } from '../utils/get-sort-offers';
 import { AuthorizationStatus } from '../const';
 import { OffersType } from '../types/types';
 import { CityMap } from '../types/types';
+import { UserLogIn } from '../types/date';
 
 type InitalState = {
   cityActive: string;
@@ -15,6 +15,9 @@ type InitalState = {
   city: CityMap;
   sortType: SortType;
   authorizationStatus: AuthorizationStatus;
+  error: string | null;
+  user: UserLogIn | null;
+  isFavorite: boolean;
 }
 
 const initialState: InitalState = {
@@ -24,7 +27,10 @@ const initialState: InitalState = {
   offersIsLoading: false,
   city: defaultLocation,
   sortType: SortType.Popular,
-  authorizationStatus: AuthorizationStatus.Unknown
+  authorizationStatus: AuthorizationStatus.Unknown,
+  error: null,
+  user: null,
+  isFavorite:false,
 };
 
 
@@ -55,6 +61,9 @@ const reducer = createReducer(initialState, (builder) => {
     })
     .addCase(requireAuthorization, (state, action) => {
       state.authorizationStatus = action.payload;
+    })
+    .addCase(setUser, (state, action) => {
+      state.user = action.payload;
     });
 
 });
