@@ -15,6 +15,8 @@ export enum AppRoute {
   Offer = '/offer/:id',
 }
 
+export const PRIVATE_ROUTES: readonly string[] = ['/favorites'];
+
 export enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
@@ -103,3 +105,12 @@ export enum ApiRoute {
 }
 
 export const TIMEOUT_SHOW_ERROR = 2000;
+
+export enum NameSpace {
+  Offers = 'OFFERS',
+  Favorites = 'FAVORITES',
+  Reviews = 'REVIEWS',
+  User = 'USER',
+  Data = 'DATA',
+  Error = 'ERROR'
+}
