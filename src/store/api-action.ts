@@ -108,21 +108,21 @@ export const fetchReviewsAction = createAsyncThunk<void, number | string | undef
       });
 
 export const submitCommentAction = createAsyncThunk<void, Comments, {
-      dispatch: AppDispatch;
-      state: State;
-      extra: AxiosInstance;
-    }
-    >(
-      'submitComments',
-      async ({ id, comment, rating }, { dispatch, extra: api }) => {
-        await api.post<Comments>(`${ApiRoute.Comments}/${id}`, {
-          comment: comment,
-          rating: rating,
-        });
-
-        dispatch(fetchReviewsAction(id));
+        dispatch: AppDispatch;
+        state: State;
+        extra: AxiosInstance;
       }
-    );
+      >(
+        'submitComments',
+        async ({ id, comment, rating }, { dispatch, extra: api }) => {
+          await api.post<Comments>(`${ApiRoute.Comments}/${id}`, {
+            comment: comment,
+            rating: rating,
+          });
+
+          dispatch(fetchReviewsAction(id));
+        }
+      );
 
 export const clearErrorAction = createAsyncThunk(
   'game/clearError',

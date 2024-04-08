@@ -6,7 +6,7 @@ export type OfferType = {
   city: City;
   host: Host;
   location: Location;
-
+  maxAdults: number;
   isFavorite: boolean;
   isPremium: boolean;
   rating: number;

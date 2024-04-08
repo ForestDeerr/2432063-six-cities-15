@@ -20,7 +20,6 @@ export const addReviews = createAction<Reviews>('data/addReviews');
 export const loadNearOffers = createAction<OffersType>('data/loadNearOffers');
 export const setNearOffersIsLoading = createAction<boolean>('data/setNearOffersIsLoading');
 export const setNearOffersIsNotFound = createAction<boolean>('data/setNearOffersIsNotFound');
-
 export const requireAuthorization = createAction<AuthorizationStatus>('user/requireAuthorization');
 export const setError = createAction<string | null>('setError');
 export const setUser = createAction<UserLogIn | null>(`${NameSpace.User}/setUser`);
