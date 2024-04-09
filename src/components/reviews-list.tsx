@@ -14,8 +14,7 @@ function ReviewsList({ reviewList, offerId }: ReviewsListProps): JSX.Element {
 
   const MIN_REVIEWS_COUNT = 0;
   const MAX_REVIEWS_COUNT = 10;
-  const maxReviews = reviewList.slice(MIN_REVIEWS_COUNT, Math.min(MAX_REVIEWS_COUNT, reviewList.length))
-    .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+  const maxReviews = reviewList.toSorted((a, b) =>Date.parse(b.date) - Date.parse(a.date)).slice(MIN_REVIEWS_COUNT, Math.min(MAX_REVIEWS_COUNT, reviewList.length));
 
   const authorizationStatus = useAppSelector((state) => state.authorizationStatus);
 
